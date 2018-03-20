@@ -67,5 +67,3 @@ set(CPACK_PACKAGE_CONTACT dmitry.syr@gmail.com)
 
 
 include (CPack)
-
-
