@@ -14,7 +14,7 @@ std::ostream& operator <<(std::ostream& out, const ip_t& vec) {
 
         out << *v;
     }
-    out << "\n";
+    //out << "\n";
 
     return out;
 }
@@ -28,7 +28,7 @@ std::ostream& operator <<(std::ostream& out, const std::vector<std::string>& vec
 
         out << *v;
     }
-    out << "\n";
+    //out << "\n";
 
 
     return out;
@@ -55,6 +55,7 @@ std::vector<std::string> split(const std::string &str, char d)
     return r;
 }
 
+//===========================================================================================
 
 bool filter(const std::vector<std::string>& OrigVec
             , const std::vector<std::string>& CondVec
@@ -104,6 +105,9 @@ bool filter_any(const std::vector<std::string>& OrigVec
 
     return false;
 }
+
+
+// =======================================================================================
 
 bool TaskLessHelper(const std::string& lp, const std::string& rp) {
 

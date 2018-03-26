@@ -26,7 +26,7 @@ int version();
 template <typename T>
 std::ostream& operator <<(std::ostream& out, const std::vector<T>& vec) {
     for(const auto& v : vec) {
-        out << v;
+        out << v << "\n";
     }
 
     return out;
