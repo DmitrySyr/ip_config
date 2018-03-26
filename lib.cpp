@@ -55,28 +55,6 @@ std::vector<std::string> split(const std::string &str, char d)
     return r;
 }
 
-//===========================================================================================
-
-bool filter(const ip_t& OrigVec
-            , const std::vector<int> CondVec
-            ) {
-
-    if(OrigVec.size() != CondVec.size()) {
-            std::cerr << "There is inconsistence in vectors size.\n";
-            return false;
-        }
-
-
-    for(size_t i = 0; i != OrigVec.size(); ++i) {
-
-            if((CondVec[i] != -1) && (OrigVec[i] != CondVec[i])) {
-                return false;
-            }
-        }
-
-    return true;
-}
-
 
 bool filter_any(const ip_t& OrigVec, const int Cond) {
 

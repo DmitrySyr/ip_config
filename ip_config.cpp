@@ -43,7 +43,7 @@ int main(int argc, char const *argv[])
 
         for(const auto& vec : ip_pool) {
 
-            if(filter(vec, std::vector<int>{1, -1, -1, -1})) {
+            if(filter(vec, 1)) {
                 std::cout << vec << "\n";
             }
         }
@@ -52,7 +52,7 @@ int main(int argc, char const *argv[])
 
         for(const auto& vec : ip_pool) {
 
-            if(filter(vec, std::vector<int>{46, 70, -1, -1})) {
+            if(filter(vec, 46, 70)) {
                 std::cout << vec << "\n";
             }
         }

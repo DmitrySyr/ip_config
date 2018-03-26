@@ -59,7 +59,28 @@ std::ostream& operator <<(std::ostream&, const std::vector<std::string>&);
 std::vector<std::string> split(const std::string &, char );
 
 
-bool filter(const ip_t& , const std::vector<int> );
+//  фильтрация по аргументам, -1 используется как индикатор любого числа в позиции
+template <typename ... Arg>
+bool filter(const ip_t& OrigVec, Arg ... arg) {
+
+    std::vector<int> CondVec{(arg)...};
+
+    if(OrigVec.size() < CondVec.size()) {
+            std::cerr << "There is an error in a number of conditions.\n";
+            return false;
+        }
+
+
+    for(size_t i = 0; i < CondVec.size(); ++i) {
+
+        if((CondVec[i] != -1) && (OrigVec[i] != CondVec[i])) {
+            return false;
+        }
+    }
+
+
+    return true;
+}
 
 
 bool filter_any(const ip_t& , const int );
