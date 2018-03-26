@@ -18,6 +18,24 @@ using ip_t = std::vector<unsigned int>;
 bool MyComp(const ip_t& LV, const ip_t& RV);
 
 
+// конвертация
+template<typename Target, typename Source>
+Target convert(Source arg)
+{
+  std::stringstream interpreter;
+  Target result;
+
+  if(!(interpreter << arg) ||
+     !(interpreter >> result) ||
+     !(interpreter >> std::ws).eof())
+    {
+        interpreter << "Converting from " << typeid(Source).name() << " to " << typeid(Target).name() << " is impossible.\n";
+        throw std::runtime_error(interpreter.str());
+    }
+
+  return result;
+}
+
 //получение версии файла
 int version();
 
