@@ -7,7 +7,8 @@
 #include <functional>
 #include <iterator>
 
-#include "PrintCont.h"
+//#include "PrintCont.h"
+#include "lib.h"
 
 
 // ("",  '.') -> [""]
@@ -122,7 +123,7 @@ int main(int argc, char const *argv[])
 
         std::sort(ip_pool.rbegin(), ip_pool.rend(), TaskLess);
 
-        Helpers::PrintVec(ip_pool);
+        std::cout << ip_pool;
 
         // 222.173.235.246
         // 222.130.177.64
@@ -144,7 +145,7 @@ int main(int argc, char const *argv[])
 
         std::copy_if(ip_pool.cbegin(), ip_pool.cend(), std::back_inserter(tmp), f1);
 
-        Helpers::PrintVec(tmp);
+        std::cout << tmp;
 
         tmp.clear();
 
@@ -163,7 +164,7 @@ int main(int argc, char const *argv[])
 
         std::copy_if(ip_pool.cbegin(), ip_pool.cend(), std::back_inserter(tmp), f2);
 
-        Helpers::PrintVec(tmp);
+        std::cout << tmp;
 
         tmp.clear();
 
@@ -182,7 +183,7 @@ int main(int argc, char const *argv[])
                     );
 
 
-        Helpers::PrintVec(tmp);
+        std::cout << tmp;
 
         // 186.204.34.46
         // 186.46.222.194
