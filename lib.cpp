@@ -57,25 +57,19 @@ std::vector<std::string> split(const std::string &str, char d)
 
 //===========================================================================================
 
-bool filter(const std::vector<std::string>& OrigVec
-            , const std::vector<std::string>& CondVec
+bool filter(const ip_t& OrigVec
+            , const std::vector<int> CondVec
             ) {
 
     if(OrigVec.size() != CondVec.size()) {
-            std::cout << "There is inconsistence in vectors size.\n";
+            std::cerr << "There is inconsistence in vectors size.\n";
             return false;
         }
 
 
-    auto OrigIt = OrigVec.cbegin(); auto CondIt = CondVec.cbegin();
+    for(size_t i = 0; i != OrigVec.size(); ++i) {
 
-    for(
-        ;
-        OrigIt != OrigVec.cend();
-        ++OrigIt, ++CondIt
-        ) {
-
-            if((*CondIt != "") && (*OrigIt != *CondIt)) {
+            if((CondVec[i] != -1) && (OrigVec[i] != CondVec[i])) {
                 return false;
             }
         }
@@ -84,20 +78,14 @@ bool filter(const std::vector<std::string>& OrigVec
 }
 
 
-bool filter_any(const std::vector<std::string>& OrigVec
-            , std::string Cond
-            ) {
+bool filter_any(const ip_t& OrigVec, const int Cond) {
 
 
-    if(Cond == "") { return true;}
+    if(Cond < 0) { return true;}
 
-    for(
-        auto OrigIt = OrigVec.cbegin();
-        OrigIt != OrigVec.cend();
-        ++OrigIt
-        ) {
+    for(const auto& vec : OrigVec) {
 
-            if((*OrigIt != "") && (*OrigIt == Cond)) {
+            if(vec == Cond) {
 
                 return true;
             }
@@ -107,24 +95,27 @@ bool filter_any(const std::vector<std::string>& OrigVec
 }
 
 
-// =======================================================================================
 
-bool TaskLessHelper(const std::string& lp, const std::string& rp) {
+//===========================================================================================
 
-    if(lp.size() < rp.size()) {return true;}
-    else if(lp.size() > rp.size()) {return false;}
-    else { return lp < rp;}
-}
+bool MyComp(const std::vector<unsigned int>& LV, const std::vector<unsigned int>& RV) {
 
-bool TaskLess(const std::vector<std::string>& LeftVec, const std::vector<std::string>& RightVec) {
+    std::cout << "Compare two objects with size " << LV.size() << " and " << RV.size() << "\n";
 
-    auto LeftIt = LeftVec.begin();
-    auto RigthIt = RightVec.begin();
+    if(LV.size() != RV.size()) {
 
-    for(; LeftIt != LeftVec.end(); ++LeftIt, ++RigthIt){
-        if(*LeftIt != *RigthIt) {
-            return TaskLessHelper(*LeftIt, *RigthIt);
-        }
+        std::cout << typeid(LV).name() <<"\n";
+        std::cout << "========================================\n";
+        std::cout << typeid(RV).name() << "\n";
+
+        std::stringstream ss;
+        ss << "Trying to compare vectors of different sizes. Which are " << LV.size() << " and " << RV.size() << "\n";
+
+         throw std::runtime_error(ss.str());
+    }
+
+    for(size_t i = 0; i != RV.size(); ++i) {
+        if(LV[i] > RV[i]) {return true;}
     }
 
     return false;

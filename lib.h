@@ -13,7 +13,7 @@
 
 #include "version.h"
 
-using ip_t = std::vector<unsigned int>;
+using ip_t = typename std::vector<unsigned int>;
 
 bool MyComp(const ip_t& LV, const ip_t& RV);
 
@@ -58,11 +58,14 @@ std::ostream& operator <<(std::ostream&, const std::vector<std::string>&);
 
 std::vector<std::string> split(const std::string &, char );
 
-bool filter(const std::vector<std::string>& , const std::vector<std::string>& );
+
+bool filter(const ip_t& , const std::vector<int> );
 
 
-bool filter_any(const std::vector<std::string>& , std::string );
+bool filter_any(const ip_t& , const int );
 
 
-bool TaskLess(const std::vector<std::string>& , const std::vector<std::string>& );
+// =======================================================================================
+
+bool MyComp(const ip_t& , const ip_t& );
 
