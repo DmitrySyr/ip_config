@@ -11,7 +11,8 @@ endif()
 
 
 project(ip_config VERSION 0.0.${VERSION_BUILD})
-#find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+
+find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 # The version number.
 #set (PROJECT_VERSION_PATCH "1.0")
@@ -29,9 +30,9 @@ configure_file (
 
 add_executable(ip_config ip_config.cpp )
 
-add_library(ip_config_lib lib.h lib.cpp PrintCont.h)
+add_library(ip_config_lib lib.h lib.cpp)
 
-#add_executable(test_main_cli test_main.cpp)
+add_executable(test_ip_fconfig tests.cpp)
 
 set_target_properties(ip_config PROPERTIES
   CXX_STANDARD 14
@@ -39,17 +40,17 @@ set_target_properties(ip_config PROPERTIES
   COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 )
 
-#set_target_properties(test_main_cli PROPERTIES
-#  COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
-#  INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
-#)
+set_target_properties(test_ip_fconfig PROPERTIES
+  COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
+  INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
+)
 
 target_link_libraries(ip_config ip_config_lib)
 
-#target_link_libraries(test_main_cli
-#  ${Boost_LIBRARIES}
-#  cpp01_2
-#)
+target_link_libraries(test_ip_fconfig
+  ${Boost_LIBRARIES}
+  ip_config_lib
+)
 
 install(TARGETS ip_config RUNTIME DESTINATION bin)
 
@@ -61,9 +62,8 @@ set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
 
 set(CPACK_PACKAGE_CONTACT dmitry.syr@gmail.com)
 
-#enable_testing()
-
-#add_test(test_version_valid test_main_cli)
-
-
 include (CPack)
+
+enable_testing()
+
+add_test(test_code_valid test_ip_fconfig)
