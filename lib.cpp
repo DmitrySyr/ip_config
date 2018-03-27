@@ -75,26 +75,3 @@ bool filter_any(const ip_t& OrigVec, const int Cond) {
 
 
 //===========================================================================================
-
-bool MyComp(const std::vector<unsigned int>& LV, const std::vector<unsigned int>& RV) {
-
-    std::cout << "Compare two objects with size " << LV.size() << " and " << RV.size() << "\n";
-
-    if(LV.size() != RV.size()) {
-
-        std::cout << typeid(LV).name() <<"\n";
-        std::cout << "========================================\n";
-        std::cout << typeid(RV).name() << "\n";
-
-        std::stringstream ss;
-        ss << "Trying to compare vectors of different sizes. Which are " << LV.size() << " and " << RV.size() << "\n";
-
-         throw std::runtime_error(ss.str());
-    }
-
-    for(size_t i = 0; i != RV.size(); ++i) {
-        if(LV[i] > RV[i]) {return true;}
-    }
-
-    return false;
-}

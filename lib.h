@@ -58,6 +58,7 @@ std::ostream& operator <<(std::ostream&, const std::vector<std::string>&);
 
 std::vector<std::string> split(const std::string &, char );
 
+//========================================================================================
 
 //  фильтрация по аргументам, -1 используется как индикатор любого числа в позиции
 template <typename ... Arg>
@@ -88,5 +89,5 @@ bool filter_any(const ip_t& , const int );
 
 // =======================================================================================
 
-bool MyComp(const ip_t& , const ip_t& );
+
 
