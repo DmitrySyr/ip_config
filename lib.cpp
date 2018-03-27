@@ -5,6 +5,8 @@ int version()
 	return PROJECT_VERSION_PATCH;
 }
 
+//============================================================================
+
 std::ostream& operator <<(std::ostream& out, const ip_t& vec) {
 
     for(auto v = vec.cbegin(); v != vec.cend(); ++v) {

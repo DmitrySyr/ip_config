@@ -1,19 +1,10 @@
 #pragma once
 
-#include <cassert>
-#include <cstdlib>
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
-#include <functional>
-#include <iterator>
-#include <sstream>
-#include <cstdint>
+#include <bits/stdc++.h>
 
 #include "version.h"
 
-using ip_t = typename std::vector<unsigned int>;
+using ip_t = std::vector<unsigned int>;
 
 bool MyComp(const ip_t& LV, const ip_t& RV);
 
