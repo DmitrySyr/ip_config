@@ -91,17 +91,17 @@ BOOST_AUTO_TEST_CASE(check_filter){
 }
 
 
-BOOST_AUTO_TEST_CASE(check_filter_throw){
-
-  const std::vector<ip_t> for_filtering{
-					  {117, 5, 169, 4309}
-					, {0, 0, 0, 0}
-                    };
-
-  BOOST_CHECK_THROW( filter(for_filtering[0], 117, 5, 169, 4309, -1), std::runtime_error);
-  BOOST_CHECK_THROW( filter(for_filtering[1], -1, -1, -1, -1, -1), std::runtime_error);
-
-}
+//BOOST_AUTO_TEST_CASE(check_filter_throw){
+//
+//  const std::vector<ip_t> for_filtering{
+//					  {117, 5, 169, 4309}
+//					, {0, 0, 0, 0}
+//                    };
+//
+//  BOOST_CHECK_THROW( filter(for_filtering[0], 117, 5, 169, 4309, -1), std::runtime_error);
+//  BOOST_CHECK_THROW( filter(for_filtering[1], -1, -1, -1, -1, -1), std::runtime_error);
+//
+//}
 
 
 BOOST_AUTO_TEST_CASE(check_filter_any){
